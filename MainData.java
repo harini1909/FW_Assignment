@@ -14,10 +14,10 @@ public class MainData {
 		System.out.println("CREATE"); 
 		PrimaryData Datas = new PrimaryData(
 				"C:\\Users\\HARINI\\DataStore.txt");
-		System.out.println(Datas.create("9", jsonObject, 55));//Success
-		System.out.println(Datas.create("9", jsonObject, 55));//Failure
-		System.out.println(Datas.create("9", jsonObject));//Failure
-		System.out.println(Datas.create("KeyNameValidationfailedsincethelengthexceeded32character", new JSONObject()));//Failure
+		System.out.println(Datas.create("one", jsonObject, 55));//Success
+		System.out.println(Datas.create("one", jsonObject, 55));//Failure
+		System.out.println(Datas.create("one", jsonObject));//Failure
+		System.out.println(Datas.create("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz123", new JSONObject()));//Failure
 		try {
 			Thread.sleep(5000);
 		} 
@@ -26,16 +26,16 @@ public class MainData {
 		}
 		System.out.println("AFTER WAIT"); //After sleep time
 		jsonObject.put("pincode", "600125");
-		System.out.println(Datas.create("9", jsonObject, 55));//Success
-		System.out.println(Datas.create("9", jsonObject));//Failure
-		System.out.println(Datas.create("9", jsonObject, 55));//Failure
+		System.out.println(Datas.create("two", jsonObject, 55));//Success
+		System.out.println(Datas.create("one", jsonObject));//Failure
+		System.out.println(Datas.create("two", jsonObject, 55));//Failure
 		
 		//Read Operation
 		System.out.println("READ"); 
-		System.out.println(Datas.read("10"));//Success
-		System.out.println(Datas.read("9"));//Success
-		System.out.println(Datas.read("8"));//Failure
-		System.out.println(Datas.read("KeyNameValidationfailedsincethelengthexceeded32characte"));//Failure
+		System.out.println(Datas.read("one"));//Success
+		System.out.println(Datas.read("two"));//Success
+		System.out.println(Datas.read("three"));//Failure
+		System.out.println(Datas.read("abcdefghijklmnopqrstuvwxyz123"));//Failure
 		try {
 			Thread.sleep(5000);
 		} 
@@ -43,15 +43,15 @@ public class MainData {
 			e.printStackTrace();
 		}
 		System.out.println("AFTER WAIT"); //After sleep time
-		System.out.println(Datas.read("10"));//Failure
-		System.out.println(Datas.read("9"));//Success
+		System.out.println(Datas.read("one"));//Failure
+		System.out.println(Datas.read("two"));//Success
 	
 		//Delete Operation
 		System.out.println("DELETE");
-		System.out.println(Datas.delete("10"));//Failure
-		System.out.println(Datas.delete("9"));//Success
-		System.out.println(Datas.delete("9"));//Failure
-		System.out.println(Datas.delete("8"));//Failure
-		System.out.println(Datas.delete("KeyNameValidationfailedsincethelengthexceeded32characte"));//Failure
+		System.out.println(Datas.delete("one"));//Failure
+		System.out.println(Datas.delete("two"));//Success
+		System.out.println(Datas.delete("two"));//Failure
+		System.out.println(Datas.delete("three"));//Failure
+		System.out.println(Datas.delete("1234567890qwertyuiopasdfghjklzxcvbnm"));//Failure
 	}
 }
